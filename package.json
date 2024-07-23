@@ -1,0 +1,23 @@
+{
+  "name": "chatgpt-line",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@line/bot-sdk": "^9.2.2",
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "mongoose": "^8.5.1",
+    "nodemon": "^3.1.4",
+    "openai": "^4.52.7",
+    "path": "^0.12.7"
+  }
+}
