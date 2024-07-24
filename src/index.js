@@ -5,12 +5,8 @@ const line = require('@line/bot-sdk');
 const { mongoose } = require('mongoose');
 const { handleEvents } = require('./helpers/handleEvents.js');
 const { downloadDir } = require('./helpers/handleImage.js');
-const fs = require('fs');
-const path = require('path');
-
 //app
 const app = express();
-
 
 //database connection
 mongoose.connect(process.env.MONGO_URL)
@@ -32,8 +28,6 @@ const printHello = (req,res,next) => {
     console.log(`Hello`);
     next();
 }
-
-console.log(downloadDir);
 
 // Sever static files from the 'download' directory
 app.use('/images', express.static(downloadDir));

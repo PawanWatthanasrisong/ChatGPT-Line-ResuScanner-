@@ -21,7 +21,7 @@ async function textGenerator(prompt, context) {
     return response.choices[0].message.content;
 }
 
-async function textGeneratorWithImage(prompt, base64Image, context) {
+async function textGeneratorWithImage(prompt, imageURL, context) {
     const response = await openai.chat.completions.create({
         model: "gpt-4o-mini",
         messages: [
@@ -35,7 +35,7 @@ async function textGeneratorWithImage(prompt, base64Image, context) {
                     {
                         "type": "image_url",
                         "image_url": {
-                            "url": `data:image/jpeg;base64,${base64Image}`
+                            "url": imageURL
                         }
                     }
                 ]
