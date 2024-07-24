@@ -39,7 +39,9 @@ app.post('/webhook', printHello , line.middleware(lineConfig), async(req, res, n
         console.log('event>>>>>');
         if (events[0] == undefined) {
             console.log(`here`);
-            return res.status(200).json('ok');
+            return res.status(200).json('No Event');
+        } else if (events[0].type !== 'message') {
+            return res.status(200).json('Not Message');
         }
         console.log('Here');
         return  await events.map(event => handleEvents(event)) || res.status(200).json('ok');
