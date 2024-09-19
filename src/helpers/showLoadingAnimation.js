@@ -1,5 +1,8 @@
-require('dotenv').config();
-const axios = require('axios');
+
+import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 const lineConfig = {
     channelAccessToken: process.env.ACCESSTOKEN,
@@ -20,6 +23,6 @@ const showLoadingAnimation = async (userId, duration) => {
     });
 }
 
-module.exports = {
+export  {
     showLoadingAnimation,
 };

@@ -1,10 +1,22 @@
-const { textGeneratorWithImage } = require('../openAI/openAI.js');
-const User = require('./userDb.js');
-const fs = require('fs');
-const path = require('path');
-const axios = require('axios');
-const AWS = require('aws-sdk');
-require('dotenv').config();
+// Import named export from your own module
+import { textGeneratorWithImage } from '../openAI/openAI.js';
+
+// If User is a default export, import it like this
+import User from './userDb.js';  // Change to named import if User is a named export
+
+// Node.js built-in modules (fs and path) - No need to change their import method
+import fs from 'fs';
+import path from 'path';
+
+// axios is a default export, import it like this
+import axios from 'axios';
+
+// AWS SDK default export
+import AWS from 'aws-sdk';
+
+import * as line from '@line/bot-sdk'; // Use named imports if necessary
+
+import { fileURLToPath } from 'url';
 
 //AWS 
 AWS.config.update({
@@ -44,6 +56,10 @@ const downloadToAWS = async(data, messageId) => {
 }
 
 //Image Download Folder
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Define the directory path
 const downloadDir = path.join(path.dirname(path.dirname(__dirname)), 'download');
 if (!fs.existsSync(downloadDir)) {
     fs.mkdirSync(downloadDir);
@@ -101,6 +117,6 @@ const encodeImage = (imagePath) =>  {
     return imageBuffer.toString('base64');
 }
 
-module.exports = { handleImage, downloadDir };
+export { handleImage, downloadDir };
 
 

@@ -1,6 +1,19 @@
-require('dotenv').config();
-const OpenAI = require('openai');
-const axios = require('axios');
+// Import from '@langchain/openai'
+import { ChatOpenAI } from '@langchain/openai'; // Assuming it's a default export
+
+// Import from 'openai'
+import OpenAI from 'openai'; // Assuming it's a default export
+
+// Import axios
+import axios from 'axios'; // axios is a default export
+
+const model = new ChatOpenAI({
+    openAIApiKey: process.env.OPENAI_API_KEY,
+
+})
+
+const response = await model.invoke('Hello');
+console.log(response);
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY});
 
@@ -63,4 +76,4 @@ async function ImageGenerator(prompt, context) {
     return image_url;
 }
 
-module.exports = { ImageGenerator, textGenerator, textGeneratorWithImage };
+export { ImageGenerator, textGenerator, textGeneratorWithImage };

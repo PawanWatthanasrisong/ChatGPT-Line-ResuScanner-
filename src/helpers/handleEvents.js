@@ -1,11 +1,16 @@
-require('dotenv').config();
-const line = require('@line/bot-sdk');
-const axios = require('axios');
-const  { textGenerator } = require('../openAI/openAI.js');
-const { showLoadingAnimation } = require('./showLoadingAnimation.js');
-const { handleText } = require('./handleText.js');
-const { handleImage } = require('./handleImage.js');
-const User = require('./userDb.js');
+
+// Import modules using ES module syntax
+import * as line from '@line/bot-sdk'; // Use named imports if necessary
+import axios from 'axios';
+
+// Import your own modules
+import { textGenerator } from '../openAI/openAI.js';
+import { showLoadingAnimation } from './showLoadingAnimation.js';
+import { handleText } from './handleText.js';
+import { handleImage } from './handleImage.js';
+import User from './userDb.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const lineConfig = {
     channelAccessToken: process.env.ACCESSTOKEN,
@@ -84,6 +89,6 @@ const handleEvents = async(event) => {
 
 
 
-module.exports = {
+export  {
     handleEvents,
 };

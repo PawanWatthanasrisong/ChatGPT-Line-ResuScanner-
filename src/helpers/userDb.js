@@ -1,12 +1,15 @@
-const mongoose = require('mongoose');
+import mongoose  from 'mongoose';
 const {Schema} = mongoose;
 
 const userSchema = new Schema({
     id: String,
     sessionContexts: String,
-    activateBot: Boolean
+    activateBot: Boolean,
+    chatHistory: Array,
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now},
 })
 
 const UserModel = mongoose.model('User', userSchema);
 
-module.exports = UserModel;
+export default  UserModel;

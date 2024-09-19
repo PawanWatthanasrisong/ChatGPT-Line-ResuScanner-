@@ -1,17 +1,21 @@
-//import all the dependencies
-require('dotenv').config();
-const express = require('express');
-const line = require('@line/bot-sdk');
-const { mongoose } = require('mongoose');
-const { handleEvents } = require('./helpers/handleEvents.js');
-const { downloadDir } = require('./helpers/handleImage.js');
-//app
+import express from 'express';
+import * as line from '@line/bot-sdk';
+import mongoose from 'mongoose'; // No need for destructuring, import default
+import { handleEvents } from './helpers/handleEvents.js';
+import { downloadDir } from './helpers/handleImage.js';
+import dotenv from 'dotenv';
+import User from './helpers/userDb.js'
+dotenv.config();
+
+
+
 const app = express();
 
 //database connection
 mongoose.connect(process.env.MONGO_URL)
     .then(() => console.log('Database Connected'))
     .catch((err) => console.log('Database still is not connected', err))
+
 
 //PORT
 const PORT = process.env.PORT;
